@@ -10,7 +10,7 @@ function generateGrid(size){
         square.style.width = `${squareSize}px`;
 
         square.addEventListener('mouseenter', function() {
-            square.style.backgroundColor = "red"
+            square.style.backgroundColor = "black"
         })
 
         square.addEventListener('mouseleave', function() {
@@ -27,6 +27,7 @@ sizeBtn.addEventListener('click', function(){
     while(true) {
         let input = prompt("How big do you want the grid to be (under 100)?");
         let size = Number(input);
+        if(input == null) return;
         if(Number.isInteger(size) && size > 0 && size < 100) {
             generateGrid(size);
             return;
