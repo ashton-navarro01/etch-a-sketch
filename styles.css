@@ -1,7 +1,15 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #block-container {
     display: flex;
     flex-wrap: wrap;
-    width: 900px;    
+    width: 900px;
+    margin-bottom: 20px;
 }
 
 .grid-square {
@@ -11,7 +19,7 @@
     box-sizing: border-box;
 }
 
-#change-size-btn {
+.btn {
     background-color: rgb(154, 0, 0);
     border: none;
     border-radius: 10px;
