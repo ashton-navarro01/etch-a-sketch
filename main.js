@@ -2,6 +2,10 @@ function generateGrid(size){
     const container = document.getElementById("block-container");
     container.innerHTML = "";
     const squareSize = 900 / size;
+
+    const blackRadio = document.getElementById("black");
+    const rainbowRadio = document.getElementById("rainbow");
+
     for(let i = 0; i < (size ** 2); i++){
         // Create the square and add css styling to it
         let square = document.createElement("div");
@@ -9,12 +13,18 @@ function generateGrid(size){
 
         square.style.width = `${squareSize}px`;
 
+        // Rainbow
         square.addEventListener('mouseenter', function() {
-            // Don't change colour if square is already coloured
-            if(square.dataset.hovered === "true") return;
+            if(blackRadio.checked) {
+                if(square.dataset.hovered === "true") return;
+                square.style.backgroundColor = "black"
+            }
             
-            const color = getRandomColour();
-            square.style.backgroundColor = `${color}`
+            else if(rainbowRadio.checked) {
+                if(square.dataset.hovered === "true") return;
+                const color = getRandomColour();
+                square.style.backgroundColor = `${color}`
+            }
             square.dataset.hovered = "true";
         })
 
@@ -23,16 +33,12 @@ function generateGrid(size){
     }
 }
 
-// Source - https://stackoverflow.com/a
-// Posted by AKX
-// Retrieved 2025-11-18, License - CC BY-SA 4.0
 function getRandomColour() {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
   return "rgb(" + r + "," + g + "," + b + ")";
 }
-
 
 function setupButtons(){
     const sizeBtn = document.getElementById("change-size-btn");
